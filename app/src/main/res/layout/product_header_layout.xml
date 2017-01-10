@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/product_header_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/header_bg_color"
+    android:orientation="vertical"
+    tools:showIn="@layout/fragment_product_browse">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:gravity="center_vertical"
+        android:layout_weight="60">
+
+        <Button
+            android:id="@+id/btn_browse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="@dimen/dp_21"
+            android:background="@drawable/browse_button_selector"
+            android:gravity="center_vertical"
+            android:text="@string/text_browse"
+            android:textColor="@drawable/button_text_color_selector"
+            android:textSize="@dimen/text_20sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/icon_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@android:drawable/ic_menu_search"
+            android:foregroundGravity="center_vertical" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/product_browse_tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="40"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/product_browse_tabs"
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="90"
+            android:paddingBottom="@dimen/dp_2"
+            app:tabBackground="@drawable/tab_selector"
+            app:tabGravity="center"
+            app:tabIndicatorColor="#FFFFFF"
+            app:tabIndicatorHeight="@dimen/dp_2"
+            app:tabMode="fixed" />
+
+        <ImageView
+            android:id="@+id/expand_collapse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/dp_21"
+            android:background="@android:drawable/ic_menu_more"
+            android:gravity="center" />
+    </LinearLayout>
+</LinearLayout>
