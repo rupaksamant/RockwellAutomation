@@ -75,10 +75,17 @@
         </LinearLayout>
     </LinearLayout>-->
 
+    <com.rockwell.catalog.customview.ProductHeaderLayout
+        android:id="@+id/product_home_header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="15"/>
+
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/prodcut_parent_frag_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="@dimen/dp_0"
+        android:layout_weight="85"
         >
 
     </android.support.design.widget.CoordinatorLayout>

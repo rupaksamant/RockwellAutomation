@@ -13,8 +13,9 @@ import com.rockwell.catalog.base.BaseFragment;
 import com.rockwell.catalog.customview.ProductHeaderLayout;
 import com.rockwell.catalog.fragment.product.FragmentOne;
 import com.rockwell.catalog.fragment.product.FragmentProductBrowse;
+import com.rockwell.catalog.fragment.product.FragmentProductHomeScreen;
 import com.rockwell.catalog.fragment.product.FragmentTwo;
-import com.rockwell.catalog.listener.OnProductHeaderListener;
+import com.rockwell.catalog.listener.OnProductHeaderInteractionListener;
 
 /**
  * Created by Techjini on 1/6/2017.
@@ -26,7 +27,8 @@ public class ProductBrowseController {
     private TabLayout mTabs;
     private FragmentOne fragmentOne;
     private FragmentTwo fragmentTwo;
-    private OnProductHeaderListener headerInterActionListener;
+    private OnProductHeaderInteractionListener headerInterActionListener;
+    private ProductHeaderLayout headerLayout;
 //    private FragmentProductBrowse mBrowseFragment;
 
 
@@ -38,14 +40,22 @@ public class ProductBrowseController {
         initFragments();
         initTabs();
     }
-    ProductHeaderLayout headerLayout;
+
     private void initTabs() {
 
-        headerLayout = (ProductHeaderLayout) mBrowseFragment.mBrowseRootView.findViewById(R.id.browse_header_layout);
-        headerLayout.findViewById(R.id.product_browse_tab_layout).setVisibility(View.VISIBLE);
+        FragmentProductHomeScreen parentFrag = (FragmentProductHomeScreen)mBrowseFragment.getParentFragment();
+        ProductHomeScreenController parentController = parentFrag.getProductHomeScreenController();
+
+
+        headerLayout = (ProductHeaderLayout) parentController.getHeaderLayout();
+
+        headerLayout.tablayout.setVisibility(View.VISIBLE);
 
 
         mTabs = headerLayout.tabs;
+
+        mTabs .removeAllTabs();
+
         bindTabsWithEvent();
 
         RelativeLayout tabOne = (RelativeLayout) LayoutInflater.from(mBrowseFragment.getActivity()).inflate(R.layout.custom_tab, null);
@@ -105,7 +115,7 @@ public class ProductBrowseController {
         fragmentTwo = new FragmentTwo();
     }
 
-    public void setHeaderInterActionListener(OnProductHeaderListener headerInterActionListener) {
+    public void setHeaderInterActionListener(OnProductHeaderInteractionListener headerInterActionListener) {
         this.headerInterActionListener = headerInterActionListener;
         headerLayout.setHeaderInteractionListener(mBrowseFragment.mHeaderInteractionListener);
     }

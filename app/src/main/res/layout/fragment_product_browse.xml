@@ -21,13 +21,13 @@
 
     <!--<include layout="@layout/product_header_layout" />-->
 
-    <com.rockwell.catalog.customview.ProductHeaderLayout
+    <!--<com.rockwell.catalog.customview.ProductHeaderLayout
         android:id="@+id/browse_header_layout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
         android:layout_weight="15">
 
-    </com.rockwell.catalog.customview.ProductHeaderLayout>
+    </com.rockwell.catalog.customview.ProductHeaderLayout>-->
 
     <android.support.design.widget.CoordinatorLayout
         android:id="@+id/prodcut_browse_frag_container"

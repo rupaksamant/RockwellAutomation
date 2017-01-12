@@ -3,7 +3,6 @@ package com.rockwell.catalog.fragment.product;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,7 +10,7 @@ import android.view.ViewGroup;
 
 import com.rockwell.catalog.R;
 import com.rockwell.catalog.base.BaseFragment;
-import com.rockwell.catalog.controller.ProductScreenController;
+import com.rockwell.catalog.controller.ProductHomeScreenController;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,9 +21,9 @@ import com.rockwell.catalog.controller.ProductScreenController;
  * create an instance of this fragment.
  */
 public class FragmentProductHomeScreen extends BaseFragment {
-    public View mRootView;
-    private TabLayout mTabs;
-    private ProductScreenController mProdController;
+    public View mProductRootView;
+
+    private ProductHomeScreenController mProductHomeScreenController;
 
     private OnFragmentInteractionListener mListener;
 
@@ -56,13 +55,13 @@ public class FragmentProductHomeScreen extends BaseFragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        mRootView = inflater.inflate(R.layout.fragment_product_home_screen, container, false);
+        mProductRootView = inflater.inflate(R.layout.fragment_product_home_screen, container, false);
 
         // Tablayout initialization
-        mProdController = new ProductScreenController(this);
-        mProdController.initViews();
+        mProductHomeScreenController = new ProductHomeScreenController(this);
+        mProductHomeScreenController.initViews();
 
-        return mRootView;
+        return mProductRootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -76,7 +75,7 @@ public class FragmentProductHomeScreen extends BaseFragment {
     public void onAttach(Context context) {
         super.onAttach(context);
         /*if (context instanceof OnFragmentInteractionListener) {
-            mListener = (OnFragmentInteractionListener) context;
+            mHeaderListener = (OnFragmentInteractionListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -102,5 +101,9 @@ public class FragmentProductHomeScreen extends BaseFragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
+    }
+
+    public ProductHomeScreenController getProductHomeScreenController() {
+        return mProductHomeScreenController;
     }
 }

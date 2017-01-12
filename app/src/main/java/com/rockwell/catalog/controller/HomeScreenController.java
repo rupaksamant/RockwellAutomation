@@ -19,14 +19,14 @@ import com.rockwell.catalog.fragment.product.FragmentProductHomeScreen;
 public class HomeScreenController {
 
     private Activity mActivity;
-    private FragmentManager mFragmentManager;
+//    private FragmentManager mFragmentManager;
 
     private CoordinatorLayout mLeftPanel;
     private CoordinatorLayout mRightPanel;
 
     public HomeScreenController(Activity activity, FragmentManager fm) {
         mActivity = activity;
-        mFragmentManager = fm;
+//        mFragmentManager = fm;
     }
 
     public void initViews(View leftView, View rightView){
@@ -43,15 +43,14 @@ public class HomeScreenController {
     private void initRightView() {
         // TODO - On the basis of left panel selected item, right fragment has to set
         Bundle args = new Bundle();
-        args.putString(ProductScreenController.FRAGMENT_TO_SHOW, ProductScreenController.BROWSE_FRAGMENT);
+        args.putString(ProductHomeScreenController.FRAGMENT_TO_SHOW, ProductHomeScreenController.SEARCH_FRAGMENT);
         Fragment rightFragment = FragmentProductHomeScreen.newInstance(args);
         replaceFragment(rightFragment);
     }
 
     public void replaceFragment(Fragment fragment) {
-        FragmentTransaction ft = mFragmentManager.beginTransaction();
+        FragmentTransaction ft = mActivity.getFragmentManager().beginTransaction();
         ft.replace(R.id.home_right_panel, fragment);
-        ft.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
         ft.commit();
     }
 }

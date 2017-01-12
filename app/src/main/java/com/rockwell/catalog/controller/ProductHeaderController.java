@@ -3,10 +3,8 @@ package com.rockwell.catalog.controller;
 import android.view.View;
 
 import com.rockwell.catalog.R;
-import com.rockwell.catalog.base.BaseFragment;
 import com.rockwell.catalog.customview.ProductHeaderLayout;
-import com.rockwell.catalog.fragment.product.FragmentProductBrowse;
-import com.rockwell.catalog.listener.OnProductHeaderListener;
+import com.rockwell.catalog.listener.OnProductHeaderInteractionListener;
 
 /**
  * Created by Techjini on 1/10/2017.
@@ -14,7 +12,7 @@ import com.rockwell.catalog.listener.OnProductHeaderListener;
 
 public class ProductHeaderController implements View.OnClickListener{
 
-    private OnProductHeaderListener mHeaderListener;
+    private OnProductHeaderInteractionListener mHeaderListener;
 
     public ProductHeaderController(View view) {
         init((ProductHeaderLayout)view);
@@ -32,18 +30,21 @@ public class ProductHeaderController implements View.OnClickListener{
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btn_browse:
-                mHeaderListener.onBrowseSearchSwitched(view.getId());
+//                mHeaderListener.onBrowseSearchSwitched(view.getId());
+                ProductHomeScreenController.mHeaderListener.onBrowseSearchSwitched(view.getId());
                 break;
             case R.id.icon_search:
-                mHeaderListener.onBrowseSearchSwitched(view.getId());
+//                mHeaderListener.onBrowseSearchSwitched(view.getId());
+                ProductHomeScreenController.mHeaderListener.onBrowseSearchSwitched(view.getId());
                 break;
             case R.id.expand_collapse:
-                mHeaderListener.onExpandCollapseClicked(view.getId());
+//                mHeaderListener.onExpandCollapseClicked(view.getId());
+                ProductHomeScreenController.mHeaderListener.onExpandCollapseClicked(view.getId());
                 break;
         }
     }
 
-    public void setEventListener(OnProductHeaderListener eventListener) {
+    public void setEventListener(OnProductHeaderInteractionListener eventListener) {
         this.mHeaderListener = eventListener;
     }
 }

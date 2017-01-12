@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 
 import com.rockwell.catalog.R;
 import com.rockwell.catalog.controller.ProductHeaderController;
-import com.rockwell.catalog.listener.OnProductHeaderListener;
+import com.rockwell.catalog.listener.OnProductHeaderInteractionListener;
 
 /**
  * Created by Techjini on 1/10/2017.
@@ -22,7 +22,8 @@ public class ProductHeaderLayout extends LinearLayout {
     public ImageView expandCollapse;
     public TabLayout tabs;
     public ImageView search;
-    public OnProductHeaderListener headerInteractionListener;
+    public OnProductHeaderInteractionListener headerInteractionListener;
+    ProductHeaderController mHeaderController;
 
     public ProductHeaderLayout(Context context) {
         super(context);
@@ -48,12 +49,12 @@ public class ProductHeaderLayout extends LinearLayout {
         this.search = (ImageView)findViewById(R.id.icon_search);
         this.browseButton = (Button)findViewById(R.id.btn_browse);
 
-        controller = new ProductHeaderController(this);
+        mHeaderController = new ProductHeaderController(this);
     }
-    ProductHeaderController controller;
-    public void setHeaderInteractionListener(OnProductHeaderListener headerInteractionListener) {
+
+    public void setHeaderInteractionListener(OnProductHeaderInteractionListener headerInteractionListener) {
         this.headerInteractionListener = headerInteractionListener;
-        controller.setEventListener(headerInteractionListener);
+        mHeaderController.setEventListener(headerInteractionListener);
     }
 
 

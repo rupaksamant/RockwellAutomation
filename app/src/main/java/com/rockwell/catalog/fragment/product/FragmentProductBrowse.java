@@ -8,8 +8,7 @@ import android.view.ViewGroup;
 import com.rockwell.catalog.R;
 import com.rockwell.catalog.base.BaseFragment;
 import com.rockwell.catalog.controller.ProductBrowseController;
-import com.rockwell.catalog.controller.ProductScreenController;
-import com.rockwell.catalog.listener.OnProductHeaderListener;
+import com.rockwell.catalog.listener.OnProductHeaderInteractionListener;
 
 /**
  * Created by Techjini on 1/6/2017.
@@ -18,8 +17,8 @@ import com.rockwell.catalog.listener.OnProductHeaderListener;
 public class FragmentProductBrowse extends BaseFragment {
 
     public View mBrowseRootView;
-    private ProductBrowseController mProdController;
-    public OnProductHeaderListener mHeaderInteractionListener;
+    private ProductBrowseController mProductBrowseController;
+    public OnProductHeaderInteractionListener mHeaderInteractionListener;
 
     public FragmentProductBrowse() {
         // Required empty public constructor
@@ -57,13 +56,14 @@ public class FragmentProductBrowse extends BaseFragment {
         mBrowseRootView = inflater.inflate(R.layout.fragment_product_browse, container, false);
 
         // Tablayout initialization
-        mProdController = new ProductBrowseController(this);
-        mProdController.initViews();
-        mProdController.setHeaderInterActionListener(mHeaderInteractionListener);
+        mProductBrowseController = new ProductBrowseController(this);
+        mProductBrowseController.initViews();
+        mProductBrowseController.setHeaderInterActionListener(mHeaderInteractionListener);
+
         return mBrowseRootView;
     }
 
-    public void setProductHeaderListener(OnProductHeaderListener browseSearchChangeListener) {
+    public void setProductHeaderListener(OnProductHeaderInteractionListener browseSearchChangeListener) {
         this.mHeaderInteractionListener = browseSearchChangeListener;
 
     }
